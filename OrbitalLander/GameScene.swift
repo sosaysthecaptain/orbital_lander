@@ -20,9 +20,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var rightThrottleNode: SKSpriteNode!
     var dt: NSTimeInterval = 0
     var lastUpdateTime: NSTimeInterval = 0
-    //var downThrust: CGVector = CGVector(dx: 0, dy: 1000)
-    //var leftThrust: CGVector = CGVector(dx: -500, dy: 0)
-    //var rightThrust: CGVector = CGVector(dx: 500, dy: 0)
     var downThrustOn: Bool = false
     var leftThrustOn: Bool = false
     var rightThrustOn: Bool = false
@@ -35,7 +32,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var oldSpeed: CGFloat = 0
     var deltaV: CGFloat = 0
     var speeds: [CGFloat] = []
-    //var stars: Int = 0
     var starFlag: Bool = false
     
     var verticalThrustNode = SKNode()
@@ -108,17 +104,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // touch information starts here
+    var rawTouch: UITouch!
+    var throttleTouch: UITouch!
+    var leftTouch: UITouch!
+    var rightTouch: UITouch!
+    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        let touch: UITouch = touches.first as! UITouch
-        sceneTouched(touch.locationInNode(self))
+        rawTouch = touches.first as! UITouch
+        sceneTouched(rawTouch.locationInNode(self))
+        //let touch: UITouch = touches.first as! UITouch
+        //sceneTouched(touch.locationInNode(self))
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         //downThrustOn = false
         //leftThrustOn = false
         //rightThrustOn = false
+        //let touch: UITouch = touches.first as! UITouch
+        //sceneTouchEnded(touch.locationInNode(self))
+        
         let touch: UITouch = touches.first as! UITouch
-        sceneTouchEnded(touch.locationInNode(self))
+        if touch == throttleTouch {
+            downThrustOn = false
+            stopFiringMainThruster()
+        } else if touch == leftTouch {
+            leftThrustOn = false
+            stopFiringLeftThruster()
+        } else if touch == rightTouch {
+            rightThrustOn = false
+            stopFiringRightThruster()
+        }
     }
     
     // respond to touches fed in by touchesBegan
@@ -128,37 +143,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if targetNode == throttleNode {
             downThrustOn = true
             fireMainThruster()
+            throttleTouch = rawTouch
         }
         if targetNode == leftThrottleNode {
             leftThrustOn = true
             fireLeftThruster()
+            leftTouch = rawTouch
         }
         if targetNode == rightThrottleNode {
             rightThrustOn = true
             fireRightThruster()
+            rightTouch = rawTouch
         }
         
         
     }
     
     // respond to end of touches individually
-    func sceneTouchEnded(location: CGPoint) {
-        let targetNode = self.nodeAtPoint(location)
-        
-        if targetNode == throttleNode {
-            downThrustOn = false
-            stopFiringMainThruster()
-        }
-        if targetNode == leftThrottleNode {
-            leftThrustOn = false
-            stopFiringLeftThruster()
-        }
-        if targetNode == rightThrottleNode {
-            rightThrustOn = false
-            stopFiringRightThruster()
-        }
-        // need to handle same touch no longer on button. "Touch that started on button"
-    }
+//    func sceneTouchEnded(location: CGPoint) {
+//        let targetNode = self.nodeAtPoint(location)
+//        
+//        if targetNode == throttleNode {
+//            downThrustOn = false
+//            stopFiringMainThruster()
+//        }
+//        if targetNode == leftThrottleNode {
+//            leftThrustOn = false
+//            stopFiringLeftThruster()
+//        }
+//        if targetNode == rightThrottleNode {
+//            rightThrustOn = false
+//            stopFiringRightThruster()
+//        }
+//        // need to handle same touch no longer on button. "Touch that started on button"
+//    }
     
     override func update(currentTime: NSTimeInterval) {
         if lastUpdateTime > 0 {
@@ -177,18 +195,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             fuel -= 0.04
         }
         if leftThrustOn && (fuel > 0) {
-            let forceY = 200 * cos(shipNode.zRotation)
-            let forceX = 200 * cos(shipNode.zRotation)
+            let forceY = 300 * cos(shipNode.zRotation)
+            let forceX = 300 * cos(shipNode.zRotation)
             
             shipNode.physicsBody!.applyForce(CGVector(dx: forceX, dy: forceY))
             fuel -= 0.02
         }
         if rightThrustOn && (fuel > 0) {
-            let forceY = -200 * cos(shipNode.zRotation)
-            let forceX = -200 * cos(shipNode.zRotation)
+            let forceY = -300 * cos(shipNode.zRotation)
+            let forceX = -300 * cos(shipNode.zRotation)
             
             shipNode.physicsBody!.applyForce(CGVector(dx: forceX, dy: forceY))
-            shipNode.physicsBody!.applyForce(CGVector(dx: -200, dy: 0))
+            //shipNode.physicsBody!.applyForce(CGVector(dx: -200, dy: 0))
             fuel -= 0.02
         }
         
