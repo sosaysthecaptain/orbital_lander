@@ -104,6 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // touch information starts here
+    // scoping these outside touchesBegan lets them be tracked from beginning to end
     var rawTouch: UITouch!
     var throttleTouch: UITouch!
     var leftTouch: UITouch!
@@ -117,12 +118,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        //downThrustOn = false
-        //leftThrustOn = false
-        //rightThrustOn = false
-        //let touch: UITouch = touches.first as! UITouch
-        //sceneTouchEnded(touch.locationInNode(self))
-        
         let touch: UITouch = touches.first as! UITouch
         if touch == throttleTouch {
             downThrustOn = false
@@ -159,24 +154,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    // respond to end of touches individually
-//    func sceneTouchEnded(location: CGPoint) {
-//        let targetNode = self.nodeAtPoint(location)
-//        
-//        if targetNode == throttleNode {
-//            downThrustOn = false
-//            stopFiringMainThruster()
-//        }
-//        if targetNode == leftThrottleNode {
-//            leftThrustOn = false
-//            stopFiringLeftThruster()
-//        }
-//        if targetNode == rightThrottleNode {
-//            rightThrustOn = false
-//            stopFiringRightThruster()
-//        }
-//        // need to handle same touch no longer on button. "Touch that started on button"
-//    }
     
     override func update(currentTime: NSTimeInterval) {
         if lastUpdateTime > 0 {

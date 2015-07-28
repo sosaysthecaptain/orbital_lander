@@ -26,6 +26,8 @@
 		5A58DAC11B67EB3E00236E6A /* Star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DABB1B67EB3E00236E6A /* Star@2x.png */; };
 		5A58DAC31B67EBF600236E6A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAC21B67EBF600236E6A /* GameScene.sks */; };
 		5A58DAC51B67EEBB00236E6A /* GameObjectNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58DAC41B67EEBB00236E6A /* GameObjectNode.swift */; };
+		5A58DAC81B680D2B00236E6A /* LanderExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAC61B680D2B00236E6A /* LanderExplosion.sks */; };
+		5A58DAC91B680D2B00236E6A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAC71B680D2B00236E6A /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		5A58DABB1B67EB3E00236E6A /* Star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@2x.png"; sourceTree = "<group>"; };
 		5A58DAC21B67EBF600236E6A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		5A58DAC41B67EEBB00236E6A /* GameObjectNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObjectNode.swift; sourceTree = "<group>"; };
+		5A58DAC61B680D2B00236E6A /* LanderExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = LanderExplosion.sks; path = ../OrbitalLander/LanderExplosion.sks; sourceTree = "<group>"; };
+		5A58DAC71B680D2B00236E6A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = ../OrbitalLander/spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,8 @@
 		5A58DAAC1B67EB0200236E6A /* Particles */ = {
 			isa = PBXGroup;
 			children = (
+				5A58DAC61B680D2B00236E6A /* LanderExplosion.sks */,
+				5A58DAC71B680D2B00236E6A /* spark.png */,
 				5A58DAAD1B67EB1300236E6A /* LeftThruster.sks */,
 				5A58DAAE1B67EB1300236E6A /* MainThruster.sks */,
 				5A58DAAF1B67EB1300236E6A /* RightThruster.sks */,
@@ -262,7 +268,9 @@
 				5A58DABD1B67EB3E00236E6A /* lander1.png in Resources */,
 				5A58DABE1B67EB3E00236E6A /* Platform.png in Resources */,
 				5A58DAB31B67EB1300236E6A /* RightThruster.sks in Resources */,
+				5A58DAC91B680D2B00236E6A /* spark.png in Resources */,
 				5A58DA921B67EA5800236E6A /* Main.storyboard in Resources */,
+				5A58DAC81B680D2B00236E6A /* LanderExplosion.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
