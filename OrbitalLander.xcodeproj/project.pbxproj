@@ -8,13 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		5A58DA891B67EA5800236E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58DA881B67EA5800236E6A /* AppDelegate.swift */; };
-		5A58DA8B1B67EA5800236E6A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DA8A1B67EA5800236E6A /* GameScene.sks */; };
 		5A58DA8D1B67EA5800236E6A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58DA8C1B67EA5800236E6A /* GameScene.swift */; };
 		5A58DA8F1B67EA5800236E6A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58DA8E1B67EA5800236E6A /* GameViewController.swift */; };
 		5A58DA921B67EA5800236E6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DA901B67EA5800236E6A /* Main.storyboard */; };
 		5A58DA941B67EA5800236E6A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DA931B67EA5800236E6A /* Images.xcassets */; };
 		5A58DA971B67EA5800236E6A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DA951B67EA5800236E6A /* LaunchScreen.xib */; };
 		5A58DAA31B67EA5800236E6A /* OrbitalLanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58DAA21B67EA5800236E6A /* OrbitalLanderTests.swift */; };
+		5A58DAB11B67EB1300236E6A /* LeftThruster.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAAD1B67EB1300236E6A /* LeftThruster.sks */; };
+		5A58DAB21B67EB1300236E6A /* MainThruster.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAAE1B67EB1300236E6A /* MainThruster.sks */; };
+		5A58DAB31B67EB1300236E6A /* RightThruster.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAAF1B67EB1300236E6A /* RightThruster.sks */; };
+		5A58DAB41B67EB1300236E6A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAB01B67EB1300236E6A /* spark.png */; };
+		5A58DABC1B67EB3E00236E6A /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAB61B67EB3E00236E6A /* box.png */; };
+		5A58DABD1B67EB3E00236E6A /* lander1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAB71B67EB3E00236E6A /* lander1.png */; };
+		5A58DABE1B67EB3E00236E6A /* Platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAB81B67EB3E00236E6A /* Platform.png */; };
+		5A58DABF1B67EB3E00236E6A /* Platform@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAB91B67EB3E00236E6A /* Platform@2x.png */; };
+		5A58DAC01B67EB3E00236E6A /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DABA1B67EB3E00236E6A /* Star.png */; };
+		5A58DAC11B67EB3E00236E6A /* Star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DABB1B67EB3E00236E6A /* Star@2x.png */; };
+		5A58DAC31B67EBF600236E6A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5A58DAC21B67EBF600236E6A /* GameScene.sks */; };
+		5A58DAC51B67EEBB00236E6A /* GameObjectNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58DAC41B67EEBB00236E6A /* GameObjectNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +42,6 @@
 		5A58DA831B67EA5800236E6A /* OrbitalLander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrbitalLander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A58DA871B67EA5800236E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A58DA881B67EA5800236E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5A58DA8A1B67EA5800236E6A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		5A58DA8C1B67EA5800236E6A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		5A58DA8E1B67EA5800236E6A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5A58DA911B67EA5800236E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +50,18 @@
 		5A58DA9C1B67EA5800236E6A /* OrbitalLanderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrbitalLanderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A58DAA11B67EA5800236E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A58DAA21B67EA5800236E6A /* OrbitalLanderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitalLanderTests.swift; sourceTree = "<group>"; };
+		5A58DAAD1B67EB1300236E6A /* LeftThruster.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LeftThruster.sks; sourceTree = "<group>"; };
+		5A58DAAE1B67EB1300236E6A /* MainThruster.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainThruster.sks; sourceTree = "<group>"; };
+		5A58DAAF1B67EB1300236E6A /* RightThruster.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RightThruster.sks; sourceTree = "<group>"; };
+		5A58DAB01B67EB1300236E6A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		5A58DAB61B67EB3E00236E6A /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
+		5A58DAB71B67EB3E00236E6A /* lander1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lander1.png; sourceTree = "<group>"; };
+		5A58DAB81B67EB3E00236E6A /* Platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Platform.png; sourceTree = "<group>"; };
+		5A58DAB91B67EB3E00236E6A /* Platform@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Platform@2x.png"; sourceTree = "<group>"; };
+		5A58DABA1B67EB3E00236E6A /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
+		5A58DABB1B67EB3E00236E6A /* Star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star@2x.png"; sourceTree = "<group>"; };
+		5A58DAC21B67EBF600236E6A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		5A58DAC41B67EEBB00236E6A /* GameObjectNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObjectNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,9 +104,12 @@
 			isa = PBXGroup;
 			children = (
 				5A58DA881B67EA5800236E6A /* AppDelegate.swift */,
-				5A58DA8A1B67EA5800236E6A /* GameScene.sks */,
+				5A58DAAC1B67EB0200236E6A /* Particles */,
+				5A58DAB51B67EB2F00236E6A /* Images */,
 				5A58DA8C1B67EA5800236E6A /* GameScene.swift */,
+				5A58DAC21B67EBF600236E6A /* GameScene.sks */,
 				5A58DA8E1B67EA5800236E6A /* GameViewController.swift */,
+				5A58DAC41B67EEBB00236E6A /* GameObjectNode.swift */,
 				5A58DA901B67EA5800236E6A /* Main.storyboard */,
 				5A58DA931B67EA5800236E6A /* Images.xcassets */,
 				5A58DA951B67EA5800236E6A /* LaunchScreen.xib */,
@@ -116,6 +141,32 @@
 				5A58DAA11B67EA5800236E6A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A58DAAC1B67EB0200236E6A /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				5A58DAAD1B67EB1300236E6A /* LeftThruster.sks */,
+				5A58DAAE1B67EB1300236E6A /* MainThruster.sks */,
+				5A58DAAF1B67EB1300236E6A /* RightThruster.sks */,
+				5A58DAB01B67EB1300236E6A /* spark.png */,
+			);
+			name = Particles;
+			path = ../OrbitalLander.xcodeproj;
+			sourceTree = "<group>";
+		};
+		5A58DAB51B67EB2F00236E6A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5A58DAB61B67EB3E00236E6A /* box.png */,
+				5A58DAB71B67EB3E00236E6A /* lander1.png */,
+				5A58DAB81B67EB3E00236E6A /* Platform.png */,
+				5A58DAB91B67EB3E00236E6A /* Platform@2x.png */,
+				5A58DABA1B67EB3E00236E6A /* Star.png */,
+				5A58DABB1B67EB3E00236E6A /* Star@2x.png */,
+			);
+			name = Images;
+			path = ../OrbitalLander.xcodeproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +250,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A58DA971B67EA5800236E6A /* LaunchScreen.xib in Resources */,
+				5A58DABF1B67EB3E00236E6A /* Platform@2x.png in Resources */,
 				5A58DA941B67EA5800236E6A /* Images.xcassets in Resources */,
-				5A58DA8B1B67EA5800236E6A /* GameScene.sks in Resources */,
+				5A58DAC01B67EB3E00236E6A /* Star.png in Resources */,
+				5A58DAC31B67EBF600236E6A /* GameScene.sks in Resources */,
+				5A58DABC1B67EB3E00236E6A /* box.png in Resources */,
+				5A58DAC11B67EB3E00236E6A /* Star@2x.png in Resources */,
+				5A58DAB21B67EB1300236E6A /* MainThruster.sks in Resources */,
+				5A58DAB11B67EB1300236E6A /* LeftThruster.sks in Resources */,
+				5A58DAB41B67EB1300236E6A /* spark.png in Resources */,
+				5A58DABD1B67EB3E00236E6A /* lander1.png in Resources */,
+				5A58DABE1B67EB3E00236E6A /* Platform.png in Resources */,
+				5A58DAB31B67EB1300236E6A /* RightThruster.sks in Resources */,
 				5A58DA921B67EA5800236E6A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +282,7 @@
 			files = (
 				5A58DA8D1B67EA5800236E6A /* GameScene.swift in Sources */,
 				5A58DA8F1B67EA5800236E6A /* GameViewController.swift in Sources */,
+				5A58DAC51B67EEBB00236E6A /* GameObjectNode.swift in Sources */,
 				5A58DA891B67EA5800236E6A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
