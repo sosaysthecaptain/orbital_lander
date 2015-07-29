@@ -201,9 +201,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             died = true
         }
         
+        // death sequence
         if died == true && exploded == false {
             exploded = true
             println("exploded: \(exploded) BOOM")
+            //shipNode.removeFromParent()
+            // build action
+            // setup emitter
+            
+            
+            let explosionPart1 = SKAction.runBlock() {
+                let explodeEmitter1 = SKEmitterNode(fileNamed: "LanderExplosion.sks")
+                explodeEmitter1.position = CGPointZero
+                let explodeNode1 = SKNode()
+                explodeNode1.addChild(explodeEmitter1)
+                self.shipNode.addChild(explodeNode1)
+            }
+            
+            let wait1 = SKAction.waitForDuration(0.1)
+            let wait2 = SKAction.waitForDuration(1.0)
+            let eliminate = SKAction.removeFromParent()
+            let explodeSequence = [explosionPart1, wait1, eliminate, wait2]
+            shipNode.runAction(SKAction.sequence(explodeSequence))
         }
         
         //println("angular velocity: \(shipNode.physicsBody?.angularVelocity)")
