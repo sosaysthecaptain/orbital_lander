@@ -123,16 +123,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         let touch: UITouch = touches.first as! UITouch
-        if touch == throttleTouch {
-            downThrustOn = false
-            stopFiringMainThruster()
-        } else if touch == leftTouch {
-            leftThrustOn = false
-            stopFiringLeftThruster()
-        } else if touch == rightTouch {
-            rightThrustOn = false
-            stopFiringRightThruster()
+        
+        // this structure needed to prevent errant touches from causing crashes
+        if touch != throttleTouch && touch != leftTouch && touch != rightTouch {
+            println("extraneous touch")
+        } else {
+            if touch == throttleTouch {
+                downThrustOn = false
+                stopFiringMainThruster()
+            } else if touch == leftTouch {
+                leftThrustOn = false
+                stopFiringLeftThruster()
+            } else if touch == rightTouch {
+                rightThrustOn = false
+                stopFiringRightThruster()
+            }
         }
+        
+        
     }
     
     // respond to touches fed in by touchesBegan
