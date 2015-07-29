@@ -43,6 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var leftThrustContainer = SKNode()
     var rightThrustNode = SKNode()
     var rightThrustContainer = SKNode()
+    var explosionContainer = SKNode()
     
     
     override func didMoveToView(view: SKView) {
@@ -208,20 +209,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //shipNode.removeFromParent()
             // build action
             // setup emitter
-            
+            addChild(explosionContainer)
             
             let explosionPart1 = SKAction.runBlock() {
                 let explodeEmitter1 = SKEmitterNode(fileNamed: "LanderExplosion.sks")
-                explodeEmitter1.position = CGPointZero
+                explodeEmitter1.position = self.shipNode.position
                 let explodeNode1 = SKNode()
                 explodeNode1.addChild(explodeEmitter1)
-                self.shipNode.addChild(explodeNode1)
+                self.explosionContainer.addChild(explodeNode1)
             }
+//            let eliminateExplosionPart1 = SKAction.runBlock() {
+//                self.explosionContainer.removeAllChildren()
+//                println("firing")
+//            }
             
-            let wait1 = SKAction.waitForDuration(0.1)
+            
+            let wait1 = SKAction.waitForDuration(0.03)
             let wait2 = SKAction.waitForDuration(1.0)
             let eliminate = SKAction.removeFromParent()
-            let explodeSequence = [explosionPart1, wait1, eliminate, wait2]
+            let explodeSequence = [explosionPart1, wait1, eliminate]
             shipNode.runAction(SKAction.sequence(explodeSequence))
         }
         
