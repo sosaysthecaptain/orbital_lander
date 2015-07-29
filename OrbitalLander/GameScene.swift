@@ -24,7 +24,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var leftThrustOn: Bool = false
     var rightThrustOn: Bool = false
     var fuel: Double = 100.0
-    var health: Double = 100.0
+    //var health: Double = 100.0        // FOR TESTING ONLY
+    var health: Double = 1.0
     var fuelBarNode: SKSpriteNode!
     var healthBarNode: SKSpriteNode!
     var padNode: SKSpriteNode!
@@ -33,6 +34,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var deltaV: CGFloat = 0
     var speeds: [CGFloat] = []
     var starFlag: Bool = false
+    var died: Bool = false
+    var exploded: Bool = false
     
     var verticalThrustNode = SKNode()
     var verticalThrustContainer = SKNode()
@@ -191,6 +194,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             stopFiringMainThruster()
             stopFiringLeftThruster()
             stopFiringRightThruster()
+        }
+        
+        // see if still alive
+        if health <= 0 {
+            died = true
+        }
+        
+        if died == true && exploded == false {
+            exploded = true
+            println("exploded: \(exploded) BOOM")
         }
         
         //println("angular velocity: \(shipNode.physicsBody?.angularVelocity)")
