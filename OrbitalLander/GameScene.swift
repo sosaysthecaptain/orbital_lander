@@ -113,6 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var throttleTouch: UITouch!
     var leftTouch: UITouch!
     var rightTouch: UITouch!
+    var randomTouch: UITouch!
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         rawTouch = touches.first as! UITouch
@@ -122,6 +123,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if touches.count > 1 {
+            println("MULTIPLE TOUCHES")
+        }
+        
         let touch: UITouch = touches.first as! UITouch
         
         // this structure needed to prevent errant touches from causing crashes
@@ -137,6 +142,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } else if touch == rightTouch {
                 rightThrustOn = false
                 stopFiringRightThruster()
+            } else if touch == randomTouch {
+                println("handling random touch")
             }
         }
         
@@ -151,16 +158,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             downThrustOn = true
             fireMainThruster()
             throttleTouch = rawTouch
-        }
-        if targetNode == leftThrottleNode {
+        } else if targetNode == leftThrottleNode {
             leftThrustOn = true
             fireLeftThruster()
             leftTouch = rawTouch
-        }
-        if targetNode == rightThrottleNode {
+        } else if targetNode == rightThrottleNode {
             rightThrustOn = true
             fireRightThruster()
             rightTouch = rawTouch
+        } else {
+            randomTouch = rawTouch
         }
         
         
@@ -175,7 +182,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         lastUpdateTime = currentTime
         
-        if downThrustOn && (fuel > 0) {
+        if downThrustOn && (fuel > 0) && died == false {
             // get zRotation of shipNode
             // create yVector and xVector based on that
             let forceY = 600 * cos(shipNode.zRotation)
@@ -183,14 +190,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shipNode.physicsBody!.applyForce(CGVector(dx: forceX, dy: forceY))
             fuel -= 0.04
         }
-        if leftThrustOn && (fuel > 0) {
+        if leftThrustOn && (fuel > 0) && died == false {
             let forceY = 300 * cos(shipNode.zRotation)
             let forceX = 300 * cos(shipNode.zRotation)
             
             shipNode.physicsBody!.applyForce(CGVector(dx: forceX, dy: forceY))
             fuel -= 0.02
         }
-        if rightThrustOn && (fuel > 0) {
+        if rightThrustOn && (fuel > 0) && died == false {
             let forceY = -300 * cos(shipNode.zRotation)
             let forceX = -300 * cos(shipNode.zRotation)
             
