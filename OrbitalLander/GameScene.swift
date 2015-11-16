@@ -24,8 +24,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var leftThrustOn: Bool = false
     var rightThrustOn: Bool = false
     var fuel: Double = 100.0
-    //var health: Double = 100.0        // FOR TESTING ONLY
-    var health: Double = 1.0
+    var health: Double = 100.0        // FOR TESTING ONLY
+    //var health: Double = 1.0
     var fuelBarNode: SKSpriteNode!
     var healthBarNode: SKSpriteNode!
     var padNode: SKSpriteNode!
@@ -36,6 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var starFlag: Bool = false
     var died: Bool = false
     var exploded: Bool = false
+    var map: SKSpriteNode!
     
     var verticalThrustNode = SKNode()
     var verticalThrustContainer = SKNode()
@@ -52,6 +53,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let maxAspectRatioHeight = size.width / maxAspectRatio
         let playableMargin: CGFloat = (size.height - maxAspectRatioHeight)/2
         let playableRect = CGRect(x: 0, y: playableMargin, width: size.width, height: size.height - playableMargin*2)
+        
+        createWorld()
         
         // border and gravity
         physicsBody = SKPhysicsBody(edgeLoopFromRect: playableRect)
@@ -115,23 +118,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var rightTouch: UITouch!
     var randomTouch: UITouch!
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        rawTouch = touches.first as! UITouch
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        rawTouch = touches.first //     as! UITouch
         sceneTouched(rawTouch.locationInNode(self))
         //let touch: UITouch = touches.first as! UITouch
         //sceneTouched(touch.locationInNode(self))
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if touches.count > 1 {
-            println("MULTIPLE TOUCHES")
+            print("MULTIPLE TOUCHES")
         }
         
-        let touch: UITouch = touches.first as! UITouch
+        let touch: UITouch = touches.first! //as! UITouch
         
         // this structure needed to prevent errant touches from causing crashes
         if touch != throttleTouch && touch != leftTouch && touch != rightTouch {
-            println("extraneous touch")
+            print("extraneous touch")
         } else {
             if touch == throttleTouch {
                 downThrustOn = false
@@ -139,11 +142,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } else if touch == leftTouch {
                 leftThrustOn = false
                 stopFiringLeftThruster()
-            } else if touch == rightTouch {
+            } else if touch == rightTouch {     // ALSO RELEVANT TO THROTTLE BUG
                 rightThrustOn = false
                 stopFiringRightThruster()
             } else if touch == randomTouch {
-                println("handling random touch")
+                print("handling random touch")
             }
         }
         
@@ -163,9 +166,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             fireLeftThruster()
             leftTouch = rawTouch
         } else if targetNode == rightThrottleNode {
+            print("right throttle")
             rightThrustOn = true
             fireRightThruster()
-            rightTouch = rawTouch
+            rightTouch = rawTouch     // THROTTLE BUG HAS SOMETHING TO DO WITH THIS LINE
         } else {
             randomTouch = rawTouch
         }
@@ -210,6 +214,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             stopFiringMainThruster()
             stopFiringLeftThruster()
             stopFiringRightThruster()
+            
+            if abs(shipNode.physicsBody!.velocity.dx) < 1 && abs(shipNode.physicsBody!.velocity.dy) < 1 {
+                died = true
+            }
         }
         
         // see if still alive
@@ -220,7 +228,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // death sequence
         if died == true && exploded == false {
             exploded = true
-            println("exploded: \(exploded) BOOM")
+            print("exploded: \(exploded) BOOM")
             //shipNode.removeFromParent()
             // build action
             // setup emitter
@@ -228,9 +236,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let explosionPart1 = SKAction.runBlock() {
                 let explodeEmitter1 = SKEmitterNode(fileNamed: "LanderExplosion.sks")
-                explodeEmitter1.position = self.shipNode.position
+                explodeEmitter1!.position = self.shipNode.position
                 let explodeNode1 = SKNode()
-                explodeNode1.addChild(explodeEmitter1)
+                explodeNode1.addChild(explodeEmitter1!)
                 self.explosionContainer.addChild(explodeNode1)
             }
 //            let eliminateExplosionPart1 = SKAction.runBlock() {
@@ -310,7 +318,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // TODO: HANDLE HEALTH DECREMENT
             // CREATE FUNCTION TO GIVE SCALAR VELOCITY?
             if shipNode.physicsBody?.velocity.dx < 1 && shipNode.physicsBody?.velocity.dy < 1 {
-                println("landed")
+                print("landed")
             }
         }
         
@@ -414,11 +422,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // should properly be in a playerShip class
     func fireMainThruster() {
         let mainThrusterEmitter = SKEmitterNode(fileNamed: "MainThruster.sks")
-        mainThrusterEmitter.position = CGPoint(x: 1, y: -100)
-        mainThrusterEmitter.name = "mainThrusterEmitter"
+        mainThrusterEmitter!.position = CGPoint(x: 1, y: -100)
+        mainThrusterEmitter!.name = "mainThrusterEmitter"
         // maybe this will help
         let verticalThrustNode = SKNode()
-        verticalThrustNode.addChild(mainThrusterEmitter)
+        verticalThrustNode.addChild(mainThrusterEmitter!)
         verticalThrustContainer.addChild(verticalThrustNode)
     }
     
@@ -428,9 +436,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func fireLeftThruster() {
         let leftThrusterEmitter = SKEmitterNode(fileNamed: "LeftThruster.sks")
-        leftThrusterEmitter.position = CGPoint(x: -75, y: 0)
-        leftThrusterEmitter.name = "leftThrusterEmitter"
-        leftThrustNode.addChild(leftThrusterEmitter)
+        leftThrusterEmitter!.position = CGPoint(x: -75, y: 0)
+        leftThrusterEmitter!.name = "leftThrusterEmitter"
+        leftThrustNode.addChild(leftThrusterEmitter!)
         leftThrustContainer.addChild(leftThrustNode)
     }
     
@@ -440,9 +448,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func fireRightThruster() {
         let rightThrusterEmitter = SKEmitterNode(fileNamed: "RightThruster.sks")
-        rightThrusterEmitter.position = CGPoint(x: 75, y: 0)
-        rightThrusterEmitter.name = "rightThrusterEmitter"
-        rightThrustNode.addChild(rightThrusterEmitter)
+        rightThrusterEmitter!.position = CGPoint(x: 75, y: 0)
+        rightThrusterEmitter!.name = "rightThrusterEmitter"
+        rightThrustNode.addChild(rightThrusterEmitter!)
         rightThrustContainer.addChild(rightThrustNode)
     }
     
@@ -466,6 +474,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         node.physicsBody?.collisionBitMask = 0
         
         return node
+    }
+    
+    func createWorld() {
+        map = createBackground()
+        addChild(map)
+    }
+    
+    func createBackground() -> SKSpriteNode {
+        let toReturn = SKSpriteNode(imageNamed: "background")
+        let texture = SKTexture(imageNamed: "background")
+        let size = CGSize(width: 3000, height: 3000)
+        toReturn.physicsBody = SKPhysicsBody(texture: texture, alphaThreshold: 0.5, size: size)
+        toReturn.physicsBody?.dynamic = false
+        toReturn.zPosition = -200
+        // set position
+        // set physics body stuff inc alpha mask
+        // set location
+        // set z
+        return toReturn
     }
     
 }

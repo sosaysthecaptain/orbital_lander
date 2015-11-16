@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A23F6A91B70405400F5FCB0 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A23F6A81B70405400F5FCB0 /* background@2x.png */; };
 		5A58DA891B67EA5800236E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58DA881B67EA5800236E6A /* AppDelegate.swift */; };
 		5A58DA8D1B67EA5800236E6A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58DA8C1B67EA5800236E6A /* GameScene.swift */; };
 		5A58DA8F1B67EA5800236E6A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58DA8E1B67EA5800236E6A /* GameViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A23F6A81B70405400F5FCB0 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		5A58DA831B67EA5800236E6A /* OrbitalLander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrbitalLander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A58DA871B67EA5800236E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A58DA881B67EA5800236E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		5A58DAB51B67EB2F00236E6A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5A23F6A81B70405400F5FCB0 /* background@2x.png */,
 				5A58DAB61B67EB3E00236E6A /* box.png */,
 				5A58DAB71B67EB3E00236E6A /* lander1.png */,
 				5A58DAB81B67EB3E00236E6A /* Platform.png */,
@@ -219,6 +222,8 @@
 		5A58DA7B1B67EA5800236E6A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Marc Auger";
 				TargetAttributes = {
@@ -267,6 +272,7 @@
 				5A58DAB41B67EB1300236E6A /* spark.png in Resources */,
 				5A58DABD1B67EB3E00236E6A /* lander1.png in Resources */,
 				5A58DABE1B67EB3E00236E6A /* Platform.png in Resources */,
+				5A23F6A91B70405400F5FCB0 /* background@2x.png in Resources */,
 				5A58DAB31B67EB1300236E6A /* RightThruster.sks in Resources */,
 				5A58DAC91B680D2B00236E6A /* spark.png in Resources */,
 				5A58DA921B67EA5800236E6A /* Main.storyboard in Resources */,
@@ -489,6 +495,7 @@
 				5A58DAA81B67EA5800236E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A58DAA91B67EA5800236E6A /* Build configuration list for PBXNativeTarget "OrbitalLanderTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +504,7 @@
 				5A58DAAB1B67EA5800236E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

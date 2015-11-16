@@ -25,7 +25,7 @@ class StarNode: GameObjectNode {
         if flag == false {
             flag = true
             stars += 1
-            println("stars: \(stars)")
+            print("stars: \(stars)")
             self.removeFromParent()
         }
         
